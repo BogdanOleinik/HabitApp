@@ -12,22 +12,27 @@ protocol SelfConfiguringCell {
     func configure(with value: Habit)
 }
 
-class HabitCollectionCell: UICollectionViewCell {
+class HabitCollectionCell: UICollectionViewCell, SelfConfiguringCell {
     
     static var reuseId = "HabitCell"
     
     let habitImageView = UIImageView()
     let habitName = UILabel(text: "Run", font: .avenir18(), textColor: .black)
-    let habitCount = UILabel(text: "5 km", font: .avenir18(), textColor: .black)
+    let habitCount = UILabel(text: "5", font: .avenir18(), textColor: .black)
     
     func configure(with value: Habit) {
-        
+        habitImageView.image = value.habitImage
+        habitName.text = value.habitName
+        habitCount.text = "\(value.habitCount)"
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemGray
         setupConstraints()
+        
+        self.layer.cornerRadius = 10
+        self.clipsToBounds = true
     }
     
     
@@ -43,13 +48,29 @@ class HabitCollectionCell: UICollectionViewCell {
         habitImageView.backgroundColor = .systemTeal
         
         addSubview(habitImageView)
+        addSubview(habitName)
+        addSubview(habitCount)
         
         NSLayoutConstraint.activate([
-            habitImageView.leftAnchor.constraint(equalTo: self.leadingAnchor),
+            habitImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             habitImageView.topAnchor.constraint(equalTo: self.topAnchor),
-            habitImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            habitImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            habitImageView.widthAnchor.constraint(equalToConstant: 100)
         ])
         
+        NSLayoutConstraint.activate([
+            habitName.leadingAnchor.constraint(equalTo: habitImageView.trailingAnchor, constant: 20),
+            habitName.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            habitName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
+            habitName.trailingAnchor.constraint(equalTo: habitCount.leadingAnchor, constant: 10)
+        ])
+        
+        NSLayoutConstraint.activate([
+            habitCount.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            habitCount.topAnchor.constraint(equalTo: self.topAnchor),
+            habitCount.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            habitCount.widthAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
 }

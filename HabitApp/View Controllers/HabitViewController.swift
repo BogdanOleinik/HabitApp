@@ -11,6 +11,7 @@ import SwiftUI
 struct Habit: Hashable {
     var habitName: String
     var habitImage: UIImage
+    var habitCount: Int
 //    var id = UUID()
 //
 //    func hash(into hasher: inout Hasher) {
@@ -28,12 +29,17 @@ class HabitViewController: UIViewController {
         case habits
     }
     
+    let addButton = AddButton()
+    
     let habitsList: [Habit] = [
-        Habit(habitName: "Run", habitImage: UIImage(named: "picture")!),
-        Habit(habitName: "Walk", habitImage: UIImage(named: "picture")!),
-        Habit(habitName: "Drink", habitImage: UIImage(named: "picture")!),
-        Habit(habitName: "Swim", habitImage: UIImage(named: "picture")!),
-        Habit(habitName: "Sleep", habitImage: UIImage(named: "picture")!),
+        Habit(habitName: "Run", habitImage: UIImage(named: "picture")!, habitCount: 20),
+        Habit(habitName: "Walk", habitImage: UIImage(named: "picture")!, habitCount: 6),
+        Habit(habitName: "Drink", habitImage: UIImage(named: "picture")!, habitCount: 43),
+        Habit(habitName: "Swim", habitImage: UIImage(named: "picture")!, habitCount: 0),
+        Habit(habitName: "Sleep", habitImage: UIImage(named: "picture")!, habitCount: 9),
+        Habit(habitName: "Swim", habitImage: UIImage(named: "picture")!, habitCount: 7),
+        Habit(habitName: "Sleep", habitImage: UIImage(named: "picture")!, habitCount: 12),
+        Habit(habitName: "Dance", habitImage: UIImage(named: "picture")!, habitCount: 18)
     ]
     
     var collectionView: UICollectionView!
@@ -41,10 +47,11 @@ class HabitViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupCollectionView()
         createDataSource()
         reloadData()
+        setupConstraints()
     }
     
     private func setupCollectionView() {
@@ -53,6 +60,7 @@ class HabitViewController: UIViewController {
         collectionView.backgroundColor = .white
         view.addSubview(collectionView)
         
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
         collectionView.register(HabitCollectionCell.self, forCellWithReuseIdentifier: HabitCollectionCell.reuseId)
     }
     
@@ -94,13 +102,24 @@ class HabitViewController: UIViewController {
             let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
             
             let section = NSCollectionLayoutSection(group: group)
-            section.interGroupSpacing = 20
+            section.interGroupSpacing = 15
             section.contentInsets = NSDirectionalEdgeInsets.init(top: 20, leading: 24, bottom: 0, trailing: 24)
             return section
         }
         return layout
     }
     
+    private func setupConstraints() {
+        
+        view.addSubview(addButton)
+        
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100)
+        ])
+    }
 }
 
 // MARK: - SwiftUI
