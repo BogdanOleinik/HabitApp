@@ -8,9 +8,9 @@
 import UIKit
 
 struct Habit: Hashable {
-    var habitName: String
-    var habitImage: UIImage
-    var habitCount: Int
+    let habitName: String
+    let habitImage: UIImage
+    let habitCount: Int
 //    var id = UUID()
 //
 //    func hash(into hasher: inout Hasher) {

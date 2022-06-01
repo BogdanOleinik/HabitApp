@@ -21,13 +21,13 @@ class HabitViewController: UIViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, Habit>?
     
     var layerHeight = CGFloat()
-    var middleButton: UIButton = {
-       let button = UIButton()
-       let image = UIImage.SymbolConfiguration(pointSize: 20, weight: .heavy, scale: .large)
-       button.setImage(UIImage(systemName: "plus", withConfiguration: image), for: .normal)
-       button.imageView?.tintColor = .white
+    var addButton: UIButton = {
+        let button = UIButton()
+        let image = UIImage.SymbolConfiguration(pointSize: 27, weight: .bold, scale: .large)
+        button.setImage(UIImage(systemName: "plus", withConfiguration: image), for: .normal)
+        button.imageView?.tintColor = .white
         button.backgroundColor = .mainColor()
-       return button
+        return button
     }()
     
     override func viewDidLoad() {
@@ -37,32 +37,35 @@ class HabitViewController: UIViewController {
         createDataSource()
         reloadData()
         setupNavigationBar()
-        addMiddleButton()
+        setupAddButton()
+        
     }
     
-    func addMiddleButton() {
-        view.addSubview(middleButton)
+    private func setupAddButton() {
+        view.addSubview(addButton)
         let size = CGFloat(80)
-        let constant: CGFloat = -20 + ( layerHeight / 2 ) - 5
+        //        let constant: CGFloat = -20 + ( layerHeight / 2 ) - 5
         
         NSLayoutConstraint.activate([
-                middleButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
-                middleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                middleButton.heightAnchor.constraint(equalToConstant: size),
-                middleButton.widthAnchor.constraint(equalToConstant: size)
+            addButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            addButton.heightAnchor.constraint(equalToConstant: size),
+            addButton.widthAnchor.constraint(equalToConstant: size)
         ])
         
-        middleButton.layer.cornerRadius = size / 2
-            
-        middleButton.layer.shadowColor = shadowButton.cgColor
-            middleButton.layer.shadowOffset = CGSize(width: 0,
-                                                     height: 8)
-            middleButton.layer.shadowOpacity = 0.75
-            middleButton.layer.shadowRadius = 13
-            
-        middleButton.layer.masksToBounds = false
-        middleButton.translatesAutoresizingMaskIntoConstraints = false
-        }
+        addButton.layer.cornerRadius = size / 2
+        
+        addButton.layer.shadowColor = shadowButton.cgColor
+        addButton.layer.shadowOffset = CGSize(width: 0,
+                                              height: 2)
+        addButton.layer.shadowOpacity = 0.75
+        addButton.layer.shadowRadius = 5
+        
+        addButton.layer.masksToBounds = false
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+    }
     
     private func setupNavigationBar() {
         
@@ -82,36 +85,14 @@ class HabitViewController: UIViewController {
             image: UIImage(named: "setting"),
             style: .done,
             target: self,
-            action: nil
+            action: #selector(addButtonPressed)
         )
-        
-////        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-////        navigationController?.navigationBar.shadowImage = UIImage()
-//
-//        navigationBarAppearance.backgroundColor = .backgroundColor()
-//        navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-//
-//
-//        navigationController?.navigationBar.tintColor = .white
-//        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
-//        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
-//
-////        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//
-////        navigationController?.navigationBar.barStyle = .black
-//
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(
-//            image: UIImage(named: "setting"),
-//            style: .done,
-//            target: self,
-//            action: nil)
-//    }
-//
-//    @objc private func settingButton() {
-//        let settingVC = SettingViewController()
-//        navigationController?.pushViewController(settingVC, animated: true)
     }
     
+    @objc func addButtonPressed() {
+        let treckerVC = TreckerViewController()
+        present(treckerVC, animated: true)
+    }
 }
     
     

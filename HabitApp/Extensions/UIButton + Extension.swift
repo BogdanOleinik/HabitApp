@@ -36,8 +36,6 @@ class AddButton: UIView {
             addButton.widthAnchor.constraint(equalToConstant: 80),
             addButton.heightAnchor.constraint(equalToConstant: 80)
         ])
-        
-        
     }
     
     required init?(coder: NSCoder) {
