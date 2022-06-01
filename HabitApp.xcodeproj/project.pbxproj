@@ -20,10 +20,11 @@
 		9C1AC2CE2844BC0700F55A8E /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1AC2CD2844BC0700F55A8E /* UIFont + Extension.swift */; };
 		9C1AC2DB2845052600F55A8E /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1AC2DA2845052600F55A8E /* HabitViewController.swift */; };
 		9C1AC2DD284505EB00F55A8E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1AC2DC284505EB00F55A8E /* TabBarController.swift */; };
-		9C1AC2DF2845061D00F55A8E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1AC2DE2845061D00F55A8E /* SettingViewController.swift */; };
+		9C1AC2DF2845061D00F55A8E /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1AC2DE2845061D00F55A8E /* TaskViewController.swift */; };
 		9C1AC2E228450C4E00F55A8E /* HabitCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1AC2E128450C4E00F55A8E /* HabitCollectionCell.swift */; };
 		9C1AC2E428454D9F00F55A8E /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1AC2E328454D9F00F55A8E /* UIButton + Extension.swift */; };
 		9C1AC2E628454E7B00F55A8E /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1AC2E528454E7B00F55A8E /* UIImageView + Extension.swift */; };
+		9C1AC2E82846161100F55A8E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1AC2E72846161100F55A8E /* UIColor + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,10 +43,12 @@
 		9C1AC2CD2844BC0700F55A8E /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		9C1AC2DA2845052600F55A8E /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 		9C1AC2DC284505EB00F55A8E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		9C1AC2DE2845061D00F55A8E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		9C1AC2DE2845061D00F55A8E /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		9C1AC2E128450C4E00F55A8E /* HabitCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionCell.swift; sourceTree = "<group>"; };
 		9C1AC2E328454D9F00F55A8E /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIButton + Extension.swift"; path = "../../UIButton + Extension.swift"; sourceTree = "<group>"; };
 		9C1AC2E528454E7B00F55A8E /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
+		9C1AC2E72846161100F55A8E /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
+		9C2D03FE2847B25F00316328 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,10 +87,8 @@
 				9C1AC2C82844BB5700F55A8E /* View Controllers */,
 				9C1AC2C92844BB6300F55A8E /* Models */,
 				9C1AC2B52843FFDA00F55A8E /* Assets.xcassets */,
+				9C2D03FD2847B25E00316328 /* Extensions */,
 				9C1AC2E328454D9F00F55A8E /* UIButton + Extension.swift */,
-				9C1AC2E528454E7B00F55A8E /* UIImageView + Extension.swift */,
-				9C1AC2CB2844BBDC00F55A8E /* UILabel + Extension.swift */,
-				9C1AC2CD2844BC0700F55A8E /* UIFont + Extension.swift */,
 				9C1AC2B72843FFDA00F55A8E /* LaunchScreen.storyboard */,
 				9C1AC2BA2843FFDA00F55A8E /* Info.plist */,
 				9C1AC2B22843FFD900F55A8E /* HabitApp.xcdatamodeld */,
@@ -99,9 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				9C1AC2DC284505EB00F55A8E /* TabBarController.swift */,
-				9C1AC2C228440A2A00F55A8E /* AddHabitViewController.swift */,
 				9C1AC2DA2845052600F55A8E /* HabitViewController.swift */,
-				9C1AC2DE2845061D00F55A8E /* SettingViewController.swift */,
+				9C1AC2C228440A2A00F55A8E /* AddHabitViewController.swift */,
+				9C1AC2DE2845061D00F55A8E /* TaskViewController.swift */,
 				9C1AC2CA2844BB6A00F55A8E /* Cell */,
 			);
 			path = "View Controllers";
@@ -130,6 +131,18 @@
 				9C1AC2C62844B08600F55A8E /* HabitCell.swift */,
 			);
 			path = TableVIew;
+			sourceTree = "<group>";
+		};
+		9C2D03FD2847B25E00316328 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9C2D03FE2847B25F00316328 /* UIButton + Extension.swift */,
+				9C1AC2E528454E7B00F55A8E /* UIImageView + Extension.swift */,
+				9C1AC2CB2844BBDC00F55A8E /* UILabel + Extension.swift */,
+				9C1AC2E72846161100F55A8E /* UIColor + Extension.swift */,
+				9C1AC2CD2844BC0700F55A8E /* UIFont + Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,12 +224,13 @@
 				9C1AC2AA2843FFD900F55A8E /* AppDelegate.swift in Sources */,
 				9C1AC2C328440A2A00F55A8E /* AddHabitViewController.swift in Sources */,
 				9C1AC2C72844B08600F55A8E /* HabitCell.swift in Sources */,
+				9C1AC2E82846161100F55A8E /* UIColor + Extension.swift in Sources */,
 				9C1AC2E628454E7B00F55A8E /* UIImageView + Extension.swift in Sources */,
 				9C1AC2DB2845052600F55A8E /* HabitViewController.swift in Sources */,
 				9C1AC2DD284505EB00F55A8E /* TabBarController.swift in Sources */,
 				9C1AC2B42843FFD900F55A8E /* HabitApp.xcdatamodeld in Sources */,
 				9C1AC2AC2843FFD900F55A8E /* SceneDelegate.swift in Sources */,
-				9C1AC2DF2845061D00F55A8E /* SettingViewController.swift in Sources */,
+				9C1AC2DF2845061D00F55A8E /* TaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

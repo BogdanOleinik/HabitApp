@@ -9,7 +9,7 @@ import UIKit
 
 class AddHabitViewController: UITableViewController {
     
-    let habits = Habits.getHabits()
+    let habits = Habit.getHabits()
     let identifire = "ChooseHabitCell"
     
     override func viewDidLoad() {
@@ -34,10 +34,32 @@ extension AddHabitViewController {
         let habit = habits[indexPath.row]
         var content = cell.defaultContentConfiguration()
         
-        content.text = habit.name
+        content.text = habit.habitName
         
         cell.contentConfiguration = content
         return cell
     }
     
+}
+
+// MARK: - SwiftUI
+import SwiftUI
+
+struct AddHabitVC: PreviewProvider {
+    static var previews: some View {
+        ContainerView().edgesIgnoringSafeArea(.all)
+    }
+
+    struct ContainerView: UIViewControllerRepresentable {
+
+        let tabBar = TabBarController()
+
+        func makeUIViewController(context: UIViewControllerRepresentableContext<AddHabitVC.ContainerView>) -> TabBarController {
+            return tabBar
+        }
+
+        func updateUIViewController(_ uiViewController: AddHabitVC.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<AddHabitVC.ContainerView>) {
+
+        }
+    }
 }
