@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class HabitViewController: UIViewController {
+class UserHabitsViewController: UIViewController {
 
     enum Section: Int, CaseIterable {
         case habits
@@ -43,7 +43,7 @@ class HabitViewController: UIViewController {
     
     private func setupAddButton() {
         view.addSubview(addButton)
-        let size = CGFloat(80)
+        let size = CGFloat(70)
         //        let constant: CGFloat = -20 + ( layerHeight / 2 ) - 5
         
         NSLayoutConstraint.activate([
@@ -89,7 +89,7 @@ class HabitViewController: UIViewController {
     }
     
     @objc func settingButtonPressed() {
-        let settingVC = SettingAppViewController()
+        let settingVC = SettingsAppViewController()
         navigationController?.pushViewController(settingVC, animated: true)
     }
     
@@ -101,7 +101,7 @@ class HabitViewController: UIViewController {
     
     
 // MARK: - UICollectionView
-extension HabitViewController {
+extension UserHabitsViewController {
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -109,7 +109,7 @@ extension HabitViewController {
         view.addSubview(collectionView)
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
-        collectionView.register(UserHobitsCell.self, forCellWithReuseIdentifier: UserHobitsCell.reuseId)
+        collectionView.register(UserHabitsCell.self, forCellWithReuseIdentifier: UserHabitsCell.reuseId)
     }
     
     private func configure<T: SelfConfiguringCell>(cellType: T.Type, with value: Habit, for indexPath: IndexPath) -> T {
@@ -128,7 +128,7 @@ extension HabitViewController {
             
             switch section {
             case .habits:
-                return self.configure(cellType: UserHobitsCell.self, with: habit, for: indexPath)
+                return self.configure(cellType: UserHabitsCell.self, with: habit, for: indexPath)
             }
         })
     }
@@ -142,7 +142,7 @@ extension HabitViewController {
 }
 
 // MARK: - Setup layout
-extension HabitViewController {
+extension UserHabitsViewController {
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnviroment) -> NSCollectionLayoutSection? in
             

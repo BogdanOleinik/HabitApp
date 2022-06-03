@@ -17,9 +17,9 @@ class AllHabitsCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupConstraints()
-
-//        self.layer.cornerRadius = 4
-//        self.clipsToBounds = true
+        accessoryType = .detailButton
+        imageHabit.tintColor = .systemBlue
+        tintColor = .systemRed
     }
 
     required init?(coder: NSCoder) {

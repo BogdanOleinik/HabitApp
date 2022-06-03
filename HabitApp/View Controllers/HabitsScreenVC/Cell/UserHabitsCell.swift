@@ -12,12 +12,12 @@ protocol SelfConfiguringCell {
     func configure(with value: Habit)
 }
 
-class UserHobitsCell: UICollectionViewCell, SelfConfiguringCell {
+class UserHabitsCell: UICollectionViewCell, SelfConfiguringCell {
     
     static var reuseId = "HabitCell"
     
     let habitImageView = UIImageView()
-    let habitName = UILabel(text: "Run", font: .avenir18(), textColor: .textColor())
+    let habitName = UILabel(text: "Run", font: .avenir22(), textColor: .textColor())
     let habitCount = UILabel(text: "5", font: .avenir18(), textColor: .textColor())
     
     func configure(with value: Habit) {
@@ -60,8 +60,7 @@ class UserHobitsCell: UICollectionViewCell, SelfConfiguringCell {
         
         NSLayoutConstraint.activate([
             habitName.leadingAnchor.constraint(equalTo: habitImageView.trailingAnchor, constant: 20),
-            habitName.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            habitName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
+            habitName.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             habitName.trailingAnchor.constraint(equalTo: habitCount.leadingAnchor, constant: 10)
         ])
         

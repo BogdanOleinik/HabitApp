@@ -21,8 +21,8 @@ class TabBarController: UITabBarController {
     }
     
     private func setupTabBar() {
-        let habitViewController = HabitViewController()
-        let settingViewController = TaskViewController()
+        let habitViewController = UserHabitsViewController()
+        let settingViewController = UserTasksViewController()
 
         tabBar.tintColor = #colorLiteral(red: 0.2429549098, green: 0.4184055924, blue: 0.8786335588, alpha: 1)
         tabBar.barTintColor = #colorLiteral(red: 0.06782443076, green: 0.07631989568, blue: 0.0978892222, alpha: 1)
