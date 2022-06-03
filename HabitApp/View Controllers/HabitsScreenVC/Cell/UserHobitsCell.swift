@@ -12,13 +12,13 @@ protocol SelfConfiguringCell {
     func configure(with value: Habit)
 }
 
-class HabitCollectionCell: UICollectionViewCell, SelfConfiguringCell {
+class UserHobitsCell: UICollectionViewCell, SelfConfiguringCell {
     
     static var reuseId = "HabitCell"
     
     let habitImageView = UIImageView()
-    let habitName = UILabel(text: "Run", font: .avenir18(), textColor: .black)
-    let habitCount = UILabel(text: "5", font: .avenir18(), textColor: .black)
+    let habitName = UILabel(text: "Run", font: .avenir18(), textColor: .textColor())
+    let habitCount = UILabel(text: "5", font: .avenir18(), textColor: .textColor())
     
     func configure(with value: Habit) {
         habitImageView.image = value.habitImage
@@ -28,7 +28,7 @@ class HabitCollectionCell: UICollectionViewCell, SelfConfiguringCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemGray
+        backgroundColor = .secondBackgroundColor()
         setupConstraints()
         
         self.layer.cornerRadius = 10

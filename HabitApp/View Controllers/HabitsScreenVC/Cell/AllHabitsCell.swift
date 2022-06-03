@@ -7,12 +7,12 @@
 
 import UIKit
 
-class HabitCell: UITableViewCell {
+class AllHabitsCell: UITableViewCell {
 
     static var reuseId = "HabitCell"
 
     let imageHabit = UIImageView()
-    let nameHabit = UILabel(text: "Habit", font: .avenir18(), textColor: .black)
+    let nameHabit = UILabel(text: "Habit", font: .avenir18(), textColor: .textColor())
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -35,13 +35,13 @@ class HabitCell: UITableViewCell {
 
 //        nameHabit.backgroundColor = .black
 //        imageHabit.backgroundColor = .red
-        
+        nameHabit.tintColor = .white
 
         NSLayoutConstraint.activate([
             imageHabit.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             imageHabit.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            imageHabit.heightAnchor.constraint(equalToConstant: 80),
-            imageHabit.widthAnchor.constraint(equalToConstant: 80)
+            imageHabit.heightAnchor.constraint(equalToConstant: 55),
+            imageHabit.widthAnchor.constraint(equalToConstant: 55)
         ])
 
         NSLayoutConstraint.activate([

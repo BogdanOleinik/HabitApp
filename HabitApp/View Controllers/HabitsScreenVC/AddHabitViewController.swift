@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AddHabitViewController.swift
 //  HabitApp
 //
 //  Created by Олейник Богдан on 29.05.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TreckerViewController: UIViewController {
+class AddHabitViewController: UIViewController {
 
     let habits = HabitsList.getHabitsList()
     var tableView = UITableView()
@@ -21,10 +21,9 @@ class TreckerViewController: UIViewController {
         setupNavigationBar()
     }
 
-
     private func createTableView() {
         self.tableView = UITableView(frame: view.bounds)
-        tableView.register(HabitCell.self, forCellReuseIdentifier: HabitCell.reuseId)
+        tableView.register(AllHabitsCell.self, forCellReuseIdentifier: AllHabitsCell.reuseId)
         tableView.backgroundColor = .backgroundColor()
 
         self.tableView.delegate = self
@@ -36,27 +35,18 @@ class TreckerViewController: UIViewController {
     }
 
     private func setupNavigationBar() {
-        title = "List"
-
-        let navigationBarApperance = UINavigationBarAppearance()
-        navigationBarApperance.backgroundColor = UIColor(#colorLiteral(
-            red: 0.6810721159,
-            green: 0.7772024274,
-            blue: 1,
-            alpha: 1)
-        )
-        navigationBarApperance.titleTextAttributes = [.foregroundColor: UIColor.black]
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(addHabit)
-        )
-
-        navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.standardAppearance = navigationBarApperance
-        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarApperance
-
+        title = "Habits"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let navigationBarAppearance = UINavigationBarAppearance()
+        
+        navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationBarAppearance.backgroundColor = .backgroundColor()
+        
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        navigationController?.navigationBar.tintColor = .white
+        
     }
 
     @objc private func addHabit() {
@@ -66,15 +56,16 @@ class TreckerViewController: UIViewController {
 
 }
 
-extension TreckerViewController: UITableViewDelegate, UITableViewDataSource {
+// MARK: - UITableView
+extension AddHabitViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         habits.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = (tableView.dequeueReusableCell(withIdentifier: identifire, for: indexPath) as? HabitCell) else { fatalError() }
+        guard let cell = (tableView.dequeueReusableCell(withIdentifier: identifire, for: indexPath) as? AllHabitsCell) else { fatalError() }
         let habit = habits[indexPath.row]
-        cell.imageHabit.image = UIImage(named: "\(habit.image)")
+        cell.imageHabit.image = UIImage(systemName: habit.image)
         cell.nameHabit.text = habit.title
 
         cell.backgroundColor = .backgroundColor()
@@ -88,7 +79,9 @@ extension TreckerViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        let habit = habits[indexPath.row]
+        let vc = SettingHabitViewController(habit: habit)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -102,9 +95,9 @@ struct TreckerVC: PreviewProvider {
 
     struct ContainerView: UIViewControllerRepresentable {
 
-        let tabBar = TreckerViewController()
+        let tabBar = AddHabitViewController()
 
-        func makeUIViewController(context: UIViewControllerRepresentableContext<TreckerVC.ContainerView>) -> TreckerViewController {
+        func makeUIViewController(context: UIViewControllerRepresentableContext<TreckerVC.ContainerView>) -> AddHabitViewController {
             return tabBar
         }
 

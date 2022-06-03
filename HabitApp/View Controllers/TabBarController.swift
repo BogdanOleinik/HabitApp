@@ -17,6 +17,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
 
         setupTabBar()
+        
     }
     
     private func setupTabBar() {
@@ -33,11 +34,13 @@ class TabBarController: UITabBarController {
             generateNavigationController(rootViewController: habitViewController, title: "Habits", image: habitImage),
             generateNavigationController(rootViewController: settingViewController, title: "Setting", image: settingImage)
         ]
-//        guard let items = tabBar.items else { return }
-//
-//        for item in items {
-//            item.imageInsets = UIEdgeInsets(top: 10, leading: 0, bottom: -10, trailing: 0)
-//        }
+        
+//        viewControllers?.compactMap({ $0 as? UINavigationController }).compactMap({ $0.viewControllers.first }).forEach({
+//            let inset: CGFloat = view.safeAreaInsets.bottom == 0 ? 4.0 : 10.0
+//                    $0.tabBarItem.imageInsets = UIEdgeInsets(top: inset, left: 0.0, bottom: -inset, right: 0.0)
+//                    $0.loadViewIfNeeded()
+//                })
+
     }
 
     private func generateNavigationController(rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {

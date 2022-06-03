@@ -38,7 +38,7 @@ class HabitViewController: UIViewController {
         reloadData()
         setupNavigationBar()
         setupAddButton()
-        
+
     }
     
     private func setupAddButton() {
@@ -68,7 +68,6 @@ class HabitViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        
         title = "Habits"
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -85,13 +84,18 @@ class HabitViewController: UIViewController {
             image: UIImage(named: "setting"),
             style: .done,
             target: self,
-            action: #selector(addButtonPressed)
+            action: #selector(settingButtonPressed)
         )
     }
     
+    @objc func settingButtonPressed() {
+        let settingVC = SettingAppViewController()
+        navigationController?.pushViewController(settingVC, animated: true)
+    }
+    
     @objc func addButtonPressed() {
-        let treckerVC = TreckerViewController()
-        present(treckerVC, animated: true)
+        let addHabitVC = AddHabitViewController()
+        navigationController?.pushViewController(addHabitVC, animated: true)
     }
 }
     
@@ -105,7 +109,7 @@ extension HabitViewController {
         view.addSubview(collectionView)
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
-        collectionView.register(HabitCollectionCell.self, forCellWithReuseIdentifier: HabitCollectionCell.reuseId)
+        collectionView.register(UserHobitsCell.self, forCellWithReuseIdentifier: UserHobitsCell.reuseId)
     }
     
     private func configure<T: SelfConfiguringCell>(cellType: T.Type, with value: Habit, for indexPath: IndexPath) -> T {
@@ -124,7 +128,7 @@ extension HabitViewController {
             
             switch section {
             case .habits:
-                return self.configure(cellType: HabitCollectionCell.self, with: habit, for: indexPath)
+                return self.configure(cellType: UserHobitsCell.self, with: habit, for: indexPath)
             }
         })
     }
@@ -150,7 +154,7 @@ extension HabitViewController {
             
             let section = NSCollectionLayoutSection(group: group)
             section.interGroupSpacing = 15
-            section.contentInsets = NSDirectionalEdgeInsets.init(top: 20, leading: 24, bottom: 0, trailing: 24)
+            section.contentInsets = NSDirectionalEdgeInsets.init(top: 20, leading: 20, bottom: 0, trailing: 20)
             return section
         }
         return layout

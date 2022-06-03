@@ -9,34 +9,34 @@ import Foundation
 import UIKit
 
 struct HabitsList {
-    let image: UIImage!
+    let image: String
     let title: String
     let secondText: String
     
     static func getHabitsList() -> [HabitsList] {
         [
             HabitsList(
-                image: UIImage(systemName: "drop.fill"),
+                image: "drop",
                 title: "Пить воду",
                 secondText: "Вода выводит токсины и заряжает бодростью"
             ),
             HabitsList(
-                image: UIImage(systemName: "drop.fill"),
+                image: "globe.europe.africa",
                 title: "Учить языки",
                 secondText: "Открой новые возможности"
             ),
             HabitsList(
-                image: UIImage(systemName: "drop.fill"),
+                image: "pawprint",
                 title: "Гулять с питомцем",
                 secondText: "Дыши свежим воздухом и наслаждайся погодой"
             ),
             HabitsList(
-                image: UIImage(systemName: "drop.fill"),
+                image: "leaf",
                 title: "Отдохни",
                 secondText: "Продуктивность приходит после отдыха"
             ),
             HabitsList(
-                image: UIImage(systemName: "drop.fill"),
+                image: "moon",
                 title: "Ложись спать",
                 secondText: "Всем нужно отдыхать"
             )
