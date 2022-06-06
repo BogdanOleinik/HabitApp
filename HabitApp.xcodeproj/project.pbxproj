@@ -32,7 +32,10 @@
 		9C69F3D0284A25BD0010D00E /* SettingsAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3CF284A25BD0010D00E /* SettingsAppCell.swift */; };
 		9C69F3D4284A69C80010D00E /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3D3284A69C80010D00E /* SwitchTableViewCell.swift */; };
 		9C69F3D7284A797C0010D00E /* UserTasksListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3D6284A797C0010D00E /* UserTasksListCell.swift */; };
-		9C69F3D9284A81630010D00E /* Checkbox .swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3D8284A81630010D00E /* Checkbox .swift */; };
+		9C69F3E1284BD2DA0010D00E /* TestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3E0284BD2DA0010D00E /* TestTableViewCell.swift */; };
+		9C69F3E6284DF6010010D00E /* TestCompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3E5284DF6010010D00E /* TestCompositionalLayout.swift */; };
+		9C69F3E9284DFE410010D00E /* UserHabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3E8284DFE410010D00E /* UserHabitCell.swift */; };
+		9C69F3EB284E02810010D00E /* DescriptionUserHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3EA284E02810010D00E /* DescriptionUserHabitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,7 +67,10 @@
 		9C69F3CF284A25BD0010D00E /* SettingsAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppCell.swift; sourceTree = "<group>"; };
 		9C69F3D3284A69C80010D00E /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		9C69F3D6284A797C0010D00E /* UserTasksListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTasksListCell.swift; sourceTree = "<group>"; };
-		9C69F3D8284A81630010D00E /* Checkbox .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Checkbox .swift"; sourceTree = "<group>"; };
+		9C69F3E0284BD2DA0010D00E /* TestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewCell.swift; sourceTree = "<group>"; };
+		9C69F3E5284DF6010010D00E /* TestCompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCompositionalLayout.swift; sourceTree = "<group>"; };
+		9C69F3E8284DFE410010D00E /* UserHabitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHabitCell.swift; sourceTree = "<group>"; };
+		9C69F3EA284E02810010D00E /* DescriptionUserHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionUserHabitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +108,9 @@
 				9C1AC2C82844BB5700F55A8E /* View Controllers */,
 				9C1AC2C92844BB6300F55A8E /* Models */,
 				9C2D03FD2847B25E00316328 /* Extensions */,
-				9C1AC2B72843FFDA00F55A8E /* LaunchScreen.storyboard */,
 				9C2D04052847F53B00316328 /* Services */,
+				9C69F3E7284DF63E0010D00E /* Tests */,
+				9C1AC2B72843FFDA00F55A8E /* LaunchScreen.storyboard */,
 				9C1AC2B52843FFDA00F55A8E /* Assets.xcassets */,
 				9C1AC2BA2843FFDA00F55A8E /* Info.plist */,
 				9C1AC2B22843FFD900F55A8E /* HabitApp.xcdatamodeld */,
@@ -135,8 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				9C69F3CF284A25BD0010D00E /* SettingsAppCell.swift */,
+				9C69F3E8284DFE410010D00E /* UserHabitCell.swift */,
 				9C69F3D3284A69C80010D00E /* SwitchTableViewCell.swift */,
-				9C1AC2E128450C4E00F55A8E /* UserHabitsCell.swift */,
 				9C1AC2C62844B08600F55A8E /* AllHabitsCell.swift */,
 			);
 			path = Cell;
@@ -146,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				9C2D03FE2847B25F00316328 /* UIButton + Extension.swift */,
-				9C69F3D8284A81630010D00E /* Checkbox .swift */,
 				9C2D04082848D56100316328 /* ButtonFormView.swift */,
 				9C2D04062848D51D00316328 /* StackView + Extension.swift */,
 				9C1AC2E528454E7B00F55A8E /* UIImageView + Extension.swift */,
@@ -169,6 +175,7 @@
 			children = (
 				9C2D040D2849060800316328 /* SettingsAppViewController.swift */,
 				9C1AC2DA2845052600F55A8E /* UserHabitsViewController.swift */,
+				9C69F3EA284E02810010D00E /* DescriptionUserHabitViewController.swift */,
 				9C1AC2AD2843FFD900F55A8E /* AddHabitViewController.swift */,
 				9C2D040A2848FFB400316328 /* SettingHabitViewController.swift */,
 				9C1AC2CA2844BB6A00F55A8E /* Cell */,
@@ -189,8 +196,18 @@
 			isa = PBXGroup;
 			children = (
 				9C69F3D6284A797C0010D00E /* UserTasksListCell.swift */,
+				9C69F3E0284BD2DA0010D00E /* TestTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		9C69F3E7284DF63E0010D00E /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				9C69F3E5284DF6010010D00E /* TestCompositionalLayout.swift */,
+				9C1AC2E128450C4E00F55A8E /* UserHabitsCell.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,11 +285,11 @@
 				9C1AC2E228450C4E00F55A8E /* UserHabitsCell.swift in Sources */,
 				9C69F3D7284A797C0010D00E /* UserTasksListCell.swift in Sources */,
 				9C2D040B2848FFB400316328 /* SettingHabitViewController.swift in Sources */,
+				9C69F3E1284BD2DA0010D00E /* TestTableViewCell.swift in Sources */,
 				9C1AC2AE2843FFD900F55A8E /* AddHabitViewController.swift in Sources */,
 				9C1AC2CC2844BBDC00F55A8E /* UILabel + Extension.swift in Sources */,
 				9C1AC2AA2843FFD900F55A8E /* AppDelegate.swift in Sources */,
 				9C69F3D0284A25BD0010D00E /* SettingsAppCell.swift in Sources */,
-				9C69F3D9284A81630010D00E /* Checkbox .swift in Sources */,
 				9C1AC2C328440A2A00F55A8E /* ?ViewController.swift in Sources */,
 				9C1AC2C72844B08600F55A8E /* AllHabitsCell.swift in Sources */,
 				9C2D04072848D51D00316328 /* StackView + Extension.swift in Sources */,
@@ -285,7 +302,10 @@
 				9C1AC2DD284505EB00F55A8E /* TabBarController.swift in Sources */,
 				9C1AC2B42843FFD900F55A8E /* HabitApp.xcdatamodeld in Sources */,
 				9C1AC2AC2843FFD900F55A8E /* SceneDelegate.swift in Sources */,
+				9C69F3EB284E02810010D00E /* DescriptionUserHabitViewController.swift in Sources */,
 				9C1AC2DF2845061D00F55A8E /* UserTasksViewController.swift in Sources */,
+				9C69F3E9284DFE410010D00E /* UserHabitCell.swift in Sources */,
+				9C69F3E6284DF6010010D00E /* TestCompositionalLayout.swift in Sources */,
 				9C2D04042847F50400316328 /* HaditsList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

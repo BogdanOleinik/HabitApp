@@ -18,7 +18,6 @@ class AddHabitViewController: UIViewController {
         
         setupNavigationBar()
         createTableView()
-        setupNavigationBar()
     }
 
     private func createTableView() {
@@ -46,7 +45,6 @@ class AddHabitViewController: UIViewController {
         
         navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         navigationController?.navigationBar.tintColor = .white
-        
     }
 
     @objc private func addHabit() {

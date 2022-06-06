@@ -1,30 +1,19 @@
 //
-//  HabitCollectionCell.swift
+//  UserHabitCell.swift
 //  HabitApp
 //
-//  Created by Олейник Богдан on 30.05.2022.
+//  Created by Олейник Богдан on 06.06.2022.
 //
 
 import UIKit
 
-protocol SelfConfiguringCell {
-    static var reuseId: String { get }
-    func configure(with value: Habit)
-}
-
-class UserHabitsCell: UICollectionViewCell, SelfConfiguringCell {
+class UserHabitCell: UICollectionViewCell {
     
     static var reuseId = "HabitCell"
     
-    let habitImageView = UIImageView()
-    let habitName = UILabel(text: "Run", font: .avenir22(), textColor: .textColor())
-    let habitCount = UILabel(text: "5", font: .avenir18(), textColor: .textColor())
-    
-    func configure(with value: Habit) {
-        habitImageView.image = value.habitImage
-        habitName.text = value.habitName
-        habitCount.text = "\(value.habitCount)"
-    }
+    var habitImageView = UIImageView()
+    let habitName = UILabel(text: "Run", font: .systemFont(ofSize: 22, weight: .regular), textColor: .textColor())
+    let habitCount = UILabel(text: "5", font: .systemFont(ofSize: 20, weight: .semibold), textColor: .textColor())
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,7 +23,6 @@ class UserHabitsCell: UICollectionViewCell, SelfConfiguringCell {
         self.layer.cornerRadius = 10
         self.clipsToBounds = true
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -81,17 +69,16 @@ struct HabitVCProvider: PreviewProvider {
     static var previews: some View {
         ContainerView().edgesIgnoringSafeArea(.all)
     }
-
+    
     struct ContainerView: UIViewControllerRepresentable {
-
+        
         let tabBar = TabBarController()
-
+        
         func makeUIViewController(context: UIViewControllerRepresentableContext<HabitVCProvider.ContainerView>) -> TabBarController {
             return tabBar
         }
-
+        
         func updateUIViewController(_ uiViewController: HabitVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<HabitVCProvider.ContainerView>) {
-
         }
     }
 }

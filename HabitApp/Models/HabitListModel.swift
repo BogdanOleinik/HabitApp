@@ -9,7 +9,7 @@ import UIKit
 
 struct Habit: Hashable {
     let habitName: String
-    let habitImage: UIImage
+    let habitImage: String
     let habitCount: Int
 //    var id = UUID()
 //
@@ -23,14 +23,15 @@ struct Habit: Hashable {
     
     static func getHabits() -> [Habit] {
         [
-            Habit(habitName: "Run", habitImage: UIImage(named: "picture")!, habitCount: 20),
-            Habit(habitName: "Walk", habitImage: UIImage(named: "picture")!, habitCount: 6),
-            Habit(habitName: "Drink", habitImage: UIImage(named: "picture")!, habitCount: 43),
-            Habit(habitName: "Swim", habitImage: UIImage(named: "picture")!, habitCount: 0),
-            Habit(habitName: "Sleep", habitImage: UIImage(named: "picture")!, habitCount: 9),
-            Habit(habitName: "Swim", habitImage: UIImage(named: "picture")!, habitCount: 7),
-            Habit(habitName: "Sleep", habitImage: UIImage(named: "picture")!, habitCount: 12),
-            Habit(habitName: "Dance", habitImage: UIImage(named: "picture")!, habitCount: 18)
+//            Habit(habitName: "Run", habitImage: UIImage(named: "picture")!, habitCount: 20),
+//            Habit(habitName: "Walk", habitImage: UIImage(named: "picture")!, habitCount: 6),
+//            Habit(habitName: "Drink", habitImage: UIImage(named: "picture")!, habitCount: 43),
+//            Habit(habitName: "Swim", habitImage: UIImage(named: "picture")!, habitCount: 0)
+            
+            Habit(habitName: "Run", habitImage: "picture", habitCount: 20),
+            Habit(habitName: "Walk", habitImage: "picture", habitCount: 6),
+            Habit(habitName: "Drink", habitImage: "picture", habitCount: 43),
+            Habit(habitName: "Swim", habitImage: "picture", habitCount: 0)
         ]
     }
 }

@@ -9,16 +9,11 @@ import UIKit
 import SwiftUI
 
 class UserHabitsViewController: UIViewController {
-
-    enum Section: Int, CaseIterable {
-        case habits
-    }
     
-    let shadowButton = UIColor(#colorLiteral(red: 0.2745098039, green: 0.4352941176, blue: 0.8745098039, alpha: 1))
+    let shadowButton = UIColor(#colorLiteral(red: 0.2745098039, green: 0.3098039216, blue: 0.4431372549, alpha: 1))
     let habitsList = Habit.getHabits()
     
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, Habit>?
     
     var layerHeight = CGFloat()
     var addButton: UIButton = {
@@ -26,7 +21,7 @@ class UserHabitsViewController: UIViewController {
         let image = UIImage.SymbolConfiguration(pointSize: 27, weight: .bold, scale: .large)
         button.setImage(UIImage(systemName: "plus", withConfiguration: image), for: .normal)
         button.imageView?.tintColor = .white
-        button.backgroundColor = .mainColor()
+        button.backgroundColor = .buttonColor()
         return button
     }()
     
@@ -34,11 +29,8 @@ class UserHabitsViewController: UIViewController {
         super.viewDidLoad()
         
         setupCollectionView()
-        createDataSource()
-        reloadData()
         setupNavigationBar()
         setupAddButton()
-
     }
     
     private func setupAddButton() {
@@ -98,8 +90,7 @@ class UserHabitsViewController: UIViewController {
         navigationController?.pushViewController(addHabitVC, animated: true)
     }
 }
-    
-    
+
 // MARK: - UICollectionView
 extension UserHabitsViewController {
     private func setupCollectionView() {
@@ -108,41 +99,12 @@ extension UserHabitsViewController {
         collectionView.backgroundColor = .backgroundColor()
         view.addSubview(collectionView)
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
-        collectionView.register(UserHabitsCell.self, forCellWithReuseIdentifier: UserHabitsCell.reuseId)
+        collectionView.register(UserHabitCell.self, forCellWithReuseIdentifier: UserHabitCell.reuseId)
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
-    private func configure<T: SelfConfiguringCell>(cellType: T.Type, with value: Habit, for indexPath: IndexPath) -> T {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reuseId, for: indexPath) as? T else {
-            fatalError("Unable to dequeue \(cellType)")}
-        cell.configure(with: value)
-        return cell
-    }
-    
-    private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Habit>(collectionView: collectionView, cellProvider: {
-            (collectionView, indexPath, habit) -> UICollectionViewCell? in
-            guard let section = Section(rawValue: indexPath.section) else {
-                fatalError("Unknown section kind")
-            }
-            
-            switch section {
-            case .habits:
-                return self.configure(cellType: UserHabitsCell.self, with: habit, for: indexPath)
-            }
-        })
-    }
-    
-    private func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Habit>()
-        snapshot.appendSections([.habits])
-        snapshot.appendItems(habitsList, toSection: .habits)
-        dataSource?.apply(snapshot, animatingDifferences: true)
-    }
-}
-
-// MARK: - Setup layout
-extension UserHabitsViewController {
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnviroment) -> NSCollectionLayoutSection? in
             
@@ -158,6 +120,35 @@ extension UserHabitsViewController {
             return section
         }
         return layout
+    }
+
+}
+
+extension UserHabitsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize.init(width: view.frame.width - 40, height: 100)
+    }
+}
+
+// MARK: - Setup layout
+extension UserHabitsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        habitsList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserHabitCell.reuseId, for: indexPath) as! UserHabitCell
+        let habit = habitsList[indexPath.row]
+        cell.habitName.text = habit.habitName
+        cell.habitCount.text = "\(habit.habitCount)"
+        cell.habitImageView.image = UIImage(named: habit.habitImage)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let habit = habitsList[indexPath.row]
+        let vc = DescriptionUserHabitViewController(habit: habit)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
