@@ -36,6 +36,7 @@
 		9C69F3E6284DF6010010D00E /* TestCompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3E5284DF6010010D00E /* TestCompositionalLayout.swift */; };
 		9C69F3E9284DFE410010D00E /* UserHabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3E8284DFE410010D00E /* UserHabitCell.swift */; };
 		9C69F3EB284E02810010D00E /* DescriptionUserHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3EA284E02810010D00E /* DescriptionUserHabitViewController.swift */; };
+		9C69F3ED284E2FF30010D00E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3EC284E2FF30010D00E /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		9C69F3E5284DF6010010D00E /* TestCompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCompositionalLayout.swift; sourceTree = "<group>"; };
 		9C69F3E8284DFE410010D00E /* UserHabitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHabitCell.swift; sourceTree = "<group>"; };
 		9C69F3EA284E02810010D00E /* DescriptionUserHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionUserHabitViewController.swift; sourceTree = "<group>"; };
+		9C69F3EC284E2FF30010D00E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 		9C2D04052847F53B00316328 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9C69F3EC284E2FF30010D00E /* StorageManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				9C1AC2CE2844BC0700F55A8E /* UIFont + Extension.swift in Sources */,
 				9C1AC2C528440D0F00F55A8E /* HabitListModel.swift in Sources */,
 				9C1AC2E228450C4E00F55A8E /* UserHabitsCell.swift in Sources */,
+				9C69F3ED284E2FF30010D00E /* StorageManager.swift in Sources */,
 				9C69F3D7284A797C0010D00E /* UserTasksListCell.swift in Sources */,
 				9C2D040B2848FFB400316328 /* SettingHabitViewController.swift in Sources */,
 				9C69F3E1284BD2DA0010D00E /* TestTableViewCell.swift in Sources */,
