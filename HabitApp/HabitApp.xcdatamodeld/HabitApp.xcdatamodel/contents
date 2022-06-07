@@ -4,6 +4,6 @@
         <attribute name="taskName" attributeType="String"/>
     </entity>
     <elements>
-        <element name="UserTasks" positionX="-54" positionY="-9" width="128" height="44"/>
+        <element name="UserTasks" positionX="-63" positionY="-18" width="128" height="44"/>
     </elements>
 </model>

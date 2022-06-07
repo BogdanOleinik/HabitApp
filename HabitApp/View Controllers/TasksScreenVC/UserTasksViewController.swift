@@ -13,7 +13,7 @@ protocol AddTaskViewControllerDelegate {
 }
 
 class UserTasksViewController: UIViewController {
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     private var tasksList: [UserTasks] = []
     
@@ -99,13 +99,21 @@ class UserTasksViewController: UIViewController {
       }
     
     private func fetchData() {
-        let fetchRequest = UserTasks.fetchRequest()
-        
-        do {
-            tasksList = try context.fetch(fetchRequest)
-        } catch let error {
-            print("Failed to fetch data", error)
+        StorageManager.shared.fetchData { result in
+            switch result {
+            case .success(let tasks):
+                self.tasksList = tasks
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
+//        let fetchRequest = UserTasks.fetchRequest()
+//
+//        do {
+//            tasksList = try context.fetch(fetchRequest)
+//        } catch let error {
+//            print("Failed to fetch data", error)
+//        }
     }
     
 }
@@ -141,15 +149,16 @@ extension UserTasksViewController: UITableViewDataSource, UITableViewDelegate {
         if editingStyle == .delete {
             tasksList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            context.delete(task)
-            if context.hasChanges {
-                do {
-                    try context.save()
-                } catch {
-                    let nserror = error as NSError
-                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-                }
-            }
+            StorageManager.shared.delete(task)
+//            context.delete(task)
+//            if context.hasChanges {
+//                do {
+//                    try context.save()
+//                } catch {
+//                    let nserror = error as NSError
+//                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//                }
+//            }
         }
     }
 }

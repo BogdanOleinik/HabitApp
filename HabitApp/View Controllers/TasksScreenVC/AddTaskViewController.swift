@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 class AddTaskViewController: UIViewController {
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var tasksList: [UserTasks] = []
     let shadowButton = UIColor(#colorLiteral(red: 0.2745098039, green: 0.3098039216, blue: 0.4431372549, alpha: 1))
@@ -88,23 +88,25 @@ class AddTaskViewController: UIViewController {
     }
     
     @objc func saveButtonPressed() {
-        guard let entityDescription = NSEntityDescription.entity(forEntityName: "UserTasks", in: context) else { return }
-        guard let task = NSManagedObject(entity: entityDescription, insertInto: context) as? UserTasks else { return }
-        task.taskName = taskTextField.text
-        if task == task {
-            if context.hasChanges {
-                do {
-                    try context.save()
-                } catch {
-                    let nserror = error as NSError
-                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-                }
-            }
+        guard let task = taskTextField.text else { return }
+        StorageManager.shared.save(task)
+//        guard let entityDescription = NSEntityDescription.entity(forEntityName: "UserTasks", in: context) else { return }
+//        guard let task = NSManagedObject(entity: entityDescription, insertInto: context) as? UserTasks else { return }
+//        task.taskName = taskTextField.text
+//        if task == task {
+//            if context.hasChanges {
+//                do {
+//                    try context.save()
+//                } catch {
+//                    let nserror = error as NSError
+//                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//                }
+//            }
         delegate?.reloadData()
         dismiss(animated: true)
-        } else {
-            return
-        }
+//        } else {
+//            return
+//        }
     }
     
     @objc func backButtonPressed() {
