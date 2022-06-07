@@ -36,7 +36,6 @@ class UserHabitsViewController: UIViewController {
     private func setupAddButton() {
         view.addSubview(addButton)
         let size = CGFloat(70)
-        //        let constant: CGFloat = -20 + ( layerHeight / 2 ) - 5
         
         NSLayoutConstraint.activate([
             addButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),

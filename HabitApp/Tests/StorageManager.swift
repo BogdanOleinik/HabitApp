@@ -8,9 +8,9 @@
 import CoreData
 
 class StorageManager {
-    
+
     static let shared = StorageManager()
-    
+
     private let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "HabitApp")
         container.loadPersistentStores { _, error in
@@ -20,17 +20,16 @@ class StorageManager {
         }
         return container
     }()
-    
+
     private let viewContext: NSManagedObjectContext
-    
+
     private init() {
         viewContext = persistentContainer.viewContext
     }
-    
-    // MARK: - Public Method
+
     func fetchData(completion: (Result<[UserTasks], Error>) -> Void) {
         let fetchRequest = UserTasks.fetchRequest()
-        
+
         do {
             let habits = try viewContext.fetch(fetchRequest)
             completion(.success(habits))
@@ -38,26 +37,24 @@ class StorageManager {
             completion(.failure(error))
         }
     }
-    
-    // Sava data
-    func save(_ taskName: String, completion: (UserTasks) -> Void) {
+
+    func save(_ taskName: String) {
         guard let entityDescription = NSEntityDescription.entity(forEntityName: "UserTasks", in: viewContext) else { return }
         guard let task = NSManagedObject(entity: entityDescription, insertInto: viewContext) as? UserTasks else { return }
         task.taskName = taskName
-        completion(task)
         saveContext()
     }
-    
+
     func edit(_ task: UserTasks, newName: String) {
         task.taskName = newName
         saveContext()
     }
-    
+
     func delete(_ task: UserTasks) {
         viewContext.delete(task)
         saveContext()
     }
-    
+
     // MARK: - Core Data Saving support
     func saveContext () {
         let context = persistentContainer.viewContext

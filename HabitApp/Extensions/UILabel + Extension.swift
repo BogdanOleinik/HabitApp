@@ -27,15 +27,3 @@ extension UILabel {
         self.textColor = textColor
     }
 }
-
-//extension UILabel {
-//
-//    convenience init(text: String, font: UIFont? = .avenir16(), textColor: UIColor?, weight: UIFont.Weight?) {
-//        self.init()
-//
-//        self.text = text
-//        self.font = font
-//        self.textColor = textColor
-//        self.f = weight
-//    }
-//}

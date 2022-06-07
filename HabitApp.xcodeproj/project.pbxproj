@@ -37,6 +37,8 @@
 		9C69F3E9284DFE410010D00E /* UserHabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3E8284DFE410010D00E /* UserHabitCell.swift */; };
 		9C69F3EB284E02810010D00E /* DescriptionUserHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3EA284E02810010D00E /* DescriptionUserHabitViewController.swift */; };
 		9C69F3ED284E2FF30010D00E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3EC284E2FF30010D00E /* StorageManager.swift */; };
+		9C69F3EF284F58B00010D00E /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3EE284F58AF0010D00E /* AddTaskViewController.swift */; };
+		9C69F3F1284F5AC60010D00E /* LineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C69F3F0284F5AC60010D00E /* LineTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,8 @@
 		9C69F3E8284DFE410010D00E /* UserHabitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHabitCell.swift; sourceTree = "<group>"; };
 		9C69F3EA284E02810010D00E /* DescriptionUserHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionUserHabitViewController.swift; sourceTree = "<group>"; };
 		9C69F3EC284E2FF30010D00E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		9C69F3EE284F58AF0010D00E /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		9C69F3F0284F5AC60010D00E /* LineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				9C2D03FE2847B25F00316328 /* UIButton + Extension.swift */,
+				9C69F3F0284F5AC60010D00E /* LineTextField.swift */,
 				9C2D04082848D56100316328 /* ButtonFormView.swift */,
 				9C2D04062848D51D00316328 /* StackView + Extension.swift */,
 				9C1AC2E528454E7B00F55A8E /* UIImageView + Extension.swift */,
@@ -168,7 +173,6 @@
 		9C2D04052847F53B00316328 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				9C69F3EC284E2FF30010D00E /* StorageManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -190,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				9C1AC2DE2845061D00F55A8E /* UserTasksViewController.swift */,
+				9C69F3EE284F58AF0010D00E /* AddTaskViewController.swift */,
 				9C69F3D1284A25EB0010D00E /* Cell */,
 			);
 			path = TasksScreenVC;
@@ -207,6 +212,7 @@
 		9C69F3E7284DF63E0010D00E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9C69F3EC284E2FF30010D00E /* StorageManager.swift */,
 				9C69F3E5284DF6010010D00E /* TestCompositionalLayout.swift */,
 				9C1AC2E128450C4E00F55A8E /* UserHabitsCell.swift */,
 			);
@@ -300,7 +306,9 @@
 				9C1AC2E82846161100F55A8E /* UIColor + Extension.swift in Sources */,
 				9C2D040E2849060800316328 /* SettingsAppViewController.swift in Sources */,
 				9C69F3D4284A69C80010D00E /* SwitchTableViewCell.swift in Sources */,
+				9C69F3EF284F58B00010D00E /* AddTaskViewController.swift in Sources */,
 				9C1AC2E628454E7B00F55A8E /* UIImageView + Extension.swift in Sources */,
+				9C69F3F1284F5AC60010D00E /* LineTextField.swift in Sources */,
 				9C1AC2DB2845052600F55A8E /* UserHabitsViewController.swift in Sources */,
 				9C2D04092848D56100316328 /* ButtonFormView.swift in Sources */,
 				9C1AC2DD284505EB00F55A8E /* TabBarController.swift in Sources */,

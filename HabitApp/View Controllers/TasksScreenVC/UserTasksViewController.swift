@@ -6,14 +6,20 @@
 //
 
 import UIKit
+import CoreData
+
+protocol AddTaskViewControllerDelegate {
+    func reloadData()
+}
 
 class UserTasksViewController: UIViewController {
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-    let tasksList = HabitsList.getHabitsList()
+    private var tasksList: [UserTasks] = []
     
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(TestTableViewCell.self, forCellReuseIdentifier: TestTableViewCell.identifier)
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -37,6 +43,8 @@ class UserTasksViewController: UIViewController {
         view.addSubview(tableView)
         setupAddButton()
         setupNavigationBar()
+        
+        fetchData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -85,9 +93,20 @@ class UserTasksViewController: UIViewController {
       }
   
       @objc func addButtonPressed() {
-          let addHabitVC = AddHabitViewController()
-          navigationController?.pushViewController(addHabitVC, animated: true)
+          let addTaskVC = AddTaskViewController()
+          addTaskVC.delegate = self
+          present(addTaskVC, animated: true)
       }
+    
+    private func fetchData() {
+        let fetchRequest = UserTasks.fetchRequest()
+        
+        do {
+            tasksList = try context.fetch(fetchRequest)
+        } catch let error {
+            print("Failed to fetch data", error)
+        }
+    }
     
 }
 
@@ -97,12 +116,13 @@ extension UserTasksViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: TestTableViewCell.identifier, for: indexPath) as! TestTableViewCell
         let task = tasksList[indexPath.row]
-        var content = cell.defaultContentConfiguration()
-        content.text = task.title
-        content.secondaryText = task.secondText
-        cell.contentConfiguration = content
+        cell.myLabel.text = task.taskName
+//        var content = cell.defaultContentConfiguration()
+//        content.text = task.taskName
+//        content.secondaryText = task.secondText
+//        cell.contentConfiguration = content
         
         return cell
     }
@@ -114,7 +134,46 @@ extension UserTasksViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         70
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let task = tasksList[indexPath.row]
+        
+        if editingStyle == .delete {
+            tasksList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            context.delete(task)
+            if context.hasChanges {
+                do {
+                    try context.save()
+                } catch {
+                    let nserror = error as NSError
+                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                }
+            }
+        }
+    }
 }
+
+extension UserTasksViewController: AddTaskViewControllerDelegate {
+    func reloadData() {
+        fetchData()
+        tableView.reloadData()
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //struct UsersSection {
 //    let title: String

@@ -31,8 +31,8 @@ class TabBarController: UITabBarController {
         let settingImage = UIImage(systemName: "paperplane.fill", withConfiguration: boldConfiguration)!
 
         viewControllers = [
-            generateNavigationController(rootViewController: habitViewController, title: "Habits", image: habitImage),
-            generateNavigationController(rootViewController: settingViewController, title: "Setting", image: settingImage)
+            generateNavigationController(rootViewController: settingViewController, title: "Setting", image: settingImage),
+            generateNavigationController(rootViewController: habitViewController, title: "Habits", image: habitImage)
         ]
         
 //        viewControllers?.compactMap({ $0 as? UINavigationController }).compactMap({ $0.viewControllers.first }).forEach({
